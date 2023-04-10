@@ -22,6 +22,7 @@ console.log(store.getState());
 // store.dispatch(fetchTodo());
 // setTimeout(() => console.log(store.getState()), 1000)
 
-// store.dispatch(addEmployee({name: "kML"}))
-// store.dispatch(addEmployee({name: "sNG"}))
-// console.log(store.getState());
+store.dispatch(addEmployee({name: "kML"}))
+store.dispatch(addEmployee({name: "sNG"}))
+console.log("Employees data", store.getState().employees);
+console.log("Tasks data", store.getState().tasks);
