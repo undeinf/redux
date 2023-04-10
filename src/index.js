@@ -18,5 +18,5 @@ store.dispatch(removeTask(1));
 console.log(store.getState());
 store.dispatch(completedTask(2));
 console.log(store.getState());
-// store.dispatch(fetchTodo());
-// setTimeout(() => console.log(store.getState()), 1000)
+store.dispatch(fetchTodo());
+setTimeout(() => console.log(store.getState()), 1000)

@@ -1,9 +1,12 @@
+// import {createAction} from '@reduxjs/toolkit'
 
+// action types
 const ADD_TASK = "ADD_TASK";
 const REMOVE_TASK = "REMOVE_TASK"
 const COMPLETED_TASK = "COMPLETED_TASK"
 
 
+// actions
 export const addTask = (task) => {
     return {
         type: ADD_TASK, payload: { task}
@@ -22,6 +25,7 @@ export const completedTask = (id) => {
     }
 }
 
+// thunk function
 export const  fetchTodo = () =>{
     return async function(dispatch, getState){
         const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
@@ -35,7 +39,9 @@ export const  fetchTodo = () =>{
 }
 
 
+// reducers
 let id = 0;
+
 
 export default function reducer(state = [], action){
     switch(action.type){
