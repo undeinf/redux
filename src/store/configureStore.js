@@ -2,11 +2,14 @@ import { legacy_createStore as createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import {devToolsEnhancer} from 'redux-devtools-extension'
 import {configureStore} from '@reduxjs/toolkit'
-import reducer from './tasks'
-// import reducer from './employees'
+import taskReducer from './tasks'
+import employeesReducer from './employees'
 
 
-const store = configureStore({reducer})
+const store = configureStore({reducer: {
+    tasks: taskReducer,
+    employees: employeesReducer
+}})
 
 // old approach
 // const store = createStore(reducer, applyMiddleware(thunk));
