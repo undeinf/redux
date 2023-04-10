@@ -26,3 +26,5 @@ store.dispatch(addEmployee({name: "kML"}))
 store.dispatch(addEmployee({name: "sNG"}))
 console.log("Employees data", store.getState().employees);
 console.log("Tasks data", store.getState().tasks);
+//show error through middleware
+store.dispatch({type:"SHOW_ERROR", payload: {error: "User not found!!"}})
