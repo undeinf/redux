@@ -5,10 +5,10 @@ import {configureStore} from '@reduxjs/toolkit'
 import reducer from './tasks'
 
 
-// const store = configureStore({reducer})
+const store = configureStore({reducer})
 
 // old approach
-const store = createStore(reducer, applyMiddleware(thunk));
+// const store = createStore(reducer, applyMiddleware(thunk));
 // redux devtools entry
 //,  devToolsEnhancer({trace: true})
 
