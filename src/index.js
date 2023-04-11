@@ -7,7 +7,7 @@
  * 4. Create redux store
  */
 import axios from 'axios';
-const { addTask, removeTask, completedTask, fetchTodo, getTasks } = require("./store/tasks/");
+const { addTask, removeTask, completedTask, fetchTodo, getTasks, fetchTasks } = require("./store/tasks/");
 const { default: store } = require("./store/configureStore");
 const { addEmployee } = require("./store/employees");
 
@@ -29,18 +29,4 @@ const { addEmployee } = require("./store/employees");
 // //show error through middleware
 // store.dispatch({type:"SHOW_ERROR", payload: {error: "User not found!!"}})
 
-const gettingTasks = async () => {
-    try{
-    //calling api
-    const response = await axios.get("http://localhost:5000/api/tasks")
-
-    console.log("Res", response)
-    //dispatch action
-    store.dispatch(getTasks({tasks: response.data}))
-
-    }catch(err){
-        store.dispatch({type:"SHOW_ERROR", payload: {error: err.message}})
-    }
-}
-
-gettingTasks();
+store.dispatch(fetchTasks())
