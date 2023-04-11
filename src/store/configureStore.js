@@ -11,10 +11,10 @@ import {
 } from '@reduxjs/toolkit'
 import taskReducer from './tasks'
 import employeesReducer from './employees'
-import log from '../middleware/log'
+import log from './middleware/log'
 // logger library provided by redux
 import logger from 'redux-logger'
-import error from '../middleware/error'
+import error from './middleware/error'
 
 const store = configureStore({
     reducer: {
