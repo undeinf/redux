@@ -8,7 +8,7 @@
  */
 import axios from 'axios';
 import { apiCallBegan } from './store/api';
-const { addTask, removeTask, completedTask, fetchTodo, getTasks, fetchTasks, loadTasks } = require("./store/tasks/");
+const { addTask, removeTask, completedTask, fetchTodo, getTasks, fetchTasks, loadTasks, addNewTask, updateCompleted, deteteTask } = require("./store/tasks/");
 const { default: store } = require("./store/configureStore");
 const { addEmployee } = require("./store/employees");
 
@@ -35,3 +35,13 @@ const { addEmployee } = require("./store/employees");
 
 store.dispatch(loadTasks());
 
+// store.dispatch(addNewTask({task: "1. Complete this excersize"}));
+// store.dispatch(addNewTask({task: "2. Complete this excersize"}));
+// store.dispatch(addNewTask({task: "4. Complete this excersize"}));
+// store.dispatch(addNewTask({task: "3. Complete this excersize"}));
+
+// store.dispatch(updateCompleted({id: 8, completed: true}));
+
+store.dispatch(deteteTask({id: 9}))
+store.dispatch(deteteTask({id: 8}))
+store.dispatch(deteteTask({id: 7}))

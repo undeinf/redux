@@ -27,10 +27,12 @@ const api = store => next =>async action => {
         })
     
     }catch(error){
-        dispatch({
-            type: onError,
-            payload: {error: error.message}
-        });
+        if(onError){
+            dispatch({
+                type: onError,
+                payload: {error: error.message}
+            });
+        }
         dispatch({
             type: "SHOW_ERROR", payload: {error: error.message}
         })

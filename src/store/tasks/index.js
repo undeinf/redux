@@ -38,19 +38,17 @@ const taskSlice = createSlice({
             // return action.payload.tasks;
         },
         addTask: (state, action) => {
-            state.tasks.push({
-                id: ++id,
-                task: action.payload.task,
-                completed: false
-            })
+           state.tasks.push(action.payload)
         },
         removeTask: (state, action) => {
             const index = state.tasks.findIndex(task => task.id === action.payload.id);
-            state.splice(index, 1);
+            console.log('index', index)
+            if(index !== -1) state.tasks.splice(index, 1);
         },
         completedTask: (state, action) => {
             const index = state.tasks.findIndex(task => task.id === action.payload.id);
-            state[index].completed = true;
+            console.log("AA", action.payload, state.tasks, index)
+            state.tasks[index].completed = action.payload.completed;
         }
     },
     // extraReducers: {
@@ -73,7 +71,6 @@ export const {apiRequested, apiRequestedFailed, getTasks, addTask, completedTask
 
 export default taskSlice.reducer;
 
-
 const url = "/tasks"
 
 export const loadTasks = () => apiCallBegan({
@@ -81,4 +78,26 @@ export const loadTasks = () => apiCallBegan({
     onSuccess: getTasks.type,
     onError: apiRequestedFailed.type,
     onStart: apiRequested.type
+})
+
+
+export const addNewTask = (task) => apiCallBegan({
+    url,
+    method: 'POST',
+    data: task,
+    onSuccess: addTask.type,
+})
+
+export const updateCompleted = task => apiCallBegan({
+    url: `${url}/${task.id}`,
+    method: 'PATCH',
+    data: task,
+    onSuccess: completedTask.type
+})
+
+export const deteteTask = task => apiCallBegan({
+    url: `${url}/${task.id}`,
+    method: 'DELETE',
+    data: task,
+    onSuccess: removeTask.type
 })
