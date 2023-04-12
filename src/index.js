@@ -29,4 +29,14 @@ const { addEmployee } = require("./store/employees");
 // //show error through middleware
 // store.dispatch({type:"SHOW_ERROR", payload: {error: "User not found!!"}})
 
-store.dispatch(fetchTasks())
+// store.dispatch(fetchTasks());
+
+store.dispatch({
+    type: "apiRequest",
+    payload: {
+        url: "/tasks",
+        onSuccess: "tasks/getTasks",
+        onError: "SHOW_ERROR"
+    }
+});
+

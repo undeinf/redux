@@ -15,6 +15,7 @@ import log from './middleware/log'
 // logger library provided by redux
 import logger from 'redux-logger'
 import error from './middleware/error'
+import api from './middleware/api'
 
 const store = configureStore({
     reducer: {
@@ -22,7 +23,7 @@ const store = configureStore({
         employees: employeesReducer
     },
     // added default middleware too to middleware
-    middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), logger, error]
+    middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), logger, api, error]
 })
 
 // old approach
