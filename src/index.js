@@ -7,7 +7,8 @@
  * 4. Create redux store
  */
 import axios from 'axios';
-const { addTask, removeTask, completedTask, fetchTodo, getTasks, fetchTasks } = require("./store/tasks/");
+import { apiCallBegan } from './store/api';
+const { addTask, removeTask, completedTask, fetchTodo, getTasks, fetchTasks, loadTasks } = require("./store/tasks/");
 const { default: store } = require("./store/configureStore");
 const { addEmployee } = require("./store/employees");
 
@@ -31,12 +32,6 @@ const { addEmployee } = require("./store/employees");
 
 // store.dispatch(fetchTasks());
 
-store.dispatch({
-    type: "apiRequest",
-    payload: {
-        url: "/tasks",
-        onSuccess: "tasks/getTasks",
-        onError: "SHOW_ERROR"
-    }
-});
+
+store.dispatch(loadTasks());
 
